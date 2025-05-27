@@ -1,106 +1,98 @@
-# Fashion-Item-Classification
+# Fashion MNIST Classification using a Neural Network
 
-Build a simple fully connected neural-network (Multi-Layer Perceptron) to classify images in the [Fashion MNIST](https://www.kaggle.com/datasets/zalando-research/fashionmnist) dataset and visualize the results with a confusion matrix and per-class accuracy bar chart.
-
----
-
-## 📌 Project Question
-> **Build an image classifier using the Fashion MNIST dataset to categorize clothing items. Visualize results using a confusion matrix.**
+This project demonstrates how to build and evaluate a neural network using TensorFlow/Keras to classify images from the Fashion MNIST dataset.
 
 ---
 
-## 🗂️ Dataset
+## 📌 Project Overview
 
-| Property | Value |
-|----------|-------|
-| **Name** | Fashion MNIST |
-| **Size** | 70 000 28 × 28 grayscale images |
-| **Split** | 60 000 train / 10 000 test |
-| **Classes** | T-shirt/top, Trouser, Pullover, Dress, Coat, Sandal, Shirt, Sneaker, Bag, Ankle boot |
+Fashion MNIST is a dataset of 70,000 grayscale images of 10 fashion categories, each of size 28x28 pixels. This project implements a deep learning pipeline to classify the images into one of the following categories:
 
-Keras can download the dataset automatically, so no manual download is required.
-
----
-
-## 🏗️ Methodology
-
-1. **Load & Normalize**  
-   Scale pixel values to `[0, 1]` for faster convergence.
-2. **One-hot Encode Labels**  
-   Convert integer class IDs to categorical vectors.
-3. **Model Architecture**  
-   * `Flatten` → `Dense(128, ReLU)` → `Dense(64, ReLU)` → `Dense(10, softmax)`
-4. **Compile**  
-   * Optimizer  : **Adam**  
-   * Loss       : **Categorical Cross-Entropy**  
-   * Metric     : **Accuracy**
-5. **Train** for **5 epochs** with a **10 % validation split**.
-6. **Evaluate** on the test set.
-7. **Visualize**  
-   * Confusion matrix (Seaborn heat-map)  
-   * Per-class recall bar chart
+- T-shirt/top
+- Trouser
+- Pullover
+- Dress
+- Coat
+- Sandal
+- Shirt
+- Sneaker
+- Bag
+- Ankle boot
 
 ---
 
-## 🔧 Requirements
+## 🧠 Methodology
 
-| Package | Version (or higher) |
-|---------|---------------------|
-| Python  | 3.8+ |
-| TensorFlow | 2.x |
-| NumPy | 1.x |
-| Matplotlib | 3.x |
-| Seaborn | 0.12+ |
-| Pandas | 1.x |
-| scikit-learn | 1.x |
+The project follows the standard machine learning pipeline:
 
-Install everything in one go:
+1. *Dataset Loading*: 
+   - The Fashion MNIST dataset is loaded using tensorflow.keras.datasets.fashion_mnist.
 
-```bash
-pip install tensorflow matplotlib seaborn pandas scikit-learn
-```
+2. *Preprocessing*:
+   - Pixel values are normalized to the range [0, 1].
+   - Labels are one-hot encoded for training with categorical cross-entropy loss.
 
----
+3. *Model Architecture*:
+   - A simple feedforward neural network (Multi-Layer Perceptron):
+     - Flatten: Converts 28x28 image to 784-dimensional vector.
+     - Dense(128, relu): Fully connected layer with 128 neurons.
+     - Dense(64, relu): Fully connected layer with 64 neurons.
+     - Dense(10, softmax): Output layer with 10 classes.
 
-## 🚀 Quick Start
+4. *Training*:
+   - Optimizer: Adam
+   - Loss Function: categorical_crossentropy
+   - Epochs: 5
+   - Validation Split: 10%
 
-Clone the repo and run the script (works in VS Code, terminal, or Google Colab):
+5. *Evaluation*:
+   - Test accuracy
+   - Classification report (precision, recall, F1-score)
+   - Confusion matrix
 
-```bash
-git clone https://github.com/<your-username>/fashion-item-classification.git
-cd fashion-item-classification
-python fashion_mnist_dense.py
-```
-
----
-
-## 🖼️ Example Output
-
-| Metric | Value (typical) |
-|--------|-----------------|
-| **Overall Test Accuracy** | ~0.88 |
-
-> Add screenshots of confusion matrix and per-class accuracy here.
+6. *Visualization*:
+   - Bar chart for per-class recall
+   - Confusion matrix heatmap
+   - Optional: Sample prediction visualizations
 
 ---
 
-## 📜 Full Code
+## 🚀 How to Run
 
-See `fashion_mnist_dense.py` in this repo for the complete commented code.
+### Requirements
 
----
+- Python 3.x
+- TensorFlow
+- NumPy
+- pandas
+- seaborn
+- matplotlib
+- scikit-learn
 
-## 🧑‍💻 Author
+📊 Results
+Overall Test Accuracy: ~87–89% (may vary slightly)
 
-| Field | Information |
-|-------|-------------|
-| **Name** | _Your Name_ |
-| **Roll No. / ID** | _Your ID_ |
-| **Institute** | _Your Institute_ |
+Per-Class Accuracy: Visualized using bar charts and classification reports.
 
----
+Confusion Matrix: Displays how predictions are distributed across classes.
 
-## 📄 License
+📷 Sample Outputs
+Per-Class Accuracy Bar Chart
 
-This repository is released for educational purposes under the MIT License.  
-Feel free to use or adapt the code—please credit the original author.
+
+Confusion Matrix
+
+
+📚 Future Improvements
+Implement CNNs (Convolutional Neural Networks) for better performance.
+
+Add early stopping and learning rate scheduling.
+
+Use data augmentation to improve generalization.
+
+Deploy the model using Flask or Streamlit.
+
+🤝 Acknowledgements
+Dataset from Fashion MNIST
+
+TensorFlow/Keras for model development
